@@ -2,6 +2,7 @@ import React, { useState, useReducer, useEffect } from "react";
 import { createGlobalStyle } from "styled-components";
 import Board from "./Board";
 import Square from "./Square";
+import styled from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -14,6 +15,7 @@ export const Context = React.createContext();
 export const ACTIONS = {
 	X: "X",
 	O: "O",
+	RESET: "RESET",
 };
 
 function reducer(state, action) {
@@ -27,6 +29,11 @@ function reducer(state, action) {
 			return {
 				player: "X",
 				squares: state.squares,
+			};
+		case ACTIONS.RESET:
+			return {
+				player: "X",
+				squares: ["", "", "", "", "", "", "", "", ""],
 			};
 		default:
 			console.log("error");
@@ -87,9 +94,14 @@ function App() {
 					/>
 				))}
 			</Board>
+			<Reset onClick={() => dispatch({ type: ACTIONS.RESET })}>Reset</Reset>
 			<GlobalStyle />
 		</Context.Provider>
 	);
 }
 
 export default App;
+
+const Reset = styled.button`
+	margin: 2rem;
+`;
