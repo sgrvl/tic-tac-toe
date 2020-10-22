@@ -8,6 +8,7 @@ const StyledSquare = styled.button`
 	border: 1px solid black;
 	border-radius: 0;
 	cursor: pointer;
+	outline: none;
 
 	&:hover {
 		background: inherit;
