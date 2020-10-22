@@ -21,7 +21,6 @@ const StyledSquare = styled.button`
 `;
 
 const handleHover = (state, index) => {
-	console.log(state.player);
 	if (state.squares[index] === "") {
 		if (state.player === "X") {
 			return `content: "X"`;
